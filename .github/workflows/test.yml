@@ -8,12 +8,6 @@ on:
 jobs:
 
   linux:
-    strategy:
-      fail-fast: false
-      matrix:
-        arch: [arm64v8, mips64le]
-    needs: check_commit_msg
-    if: ${{ !contains( needs.check_commit_msg.outputs.commit_message, 'NO_DEB') }}
     name: Debian
     runs-on: ubuntu-latest
 
@@ -22,7 +16,7 @@ jobs:
         run: |
           sudo apt-get install -y qemu qemu-user-static
       - name: setup container
-        uses: docker://${{ matrix.arch }}/debian:stable
+        uses: docker://arm64v8/debian:stable
       - name: test
         run: |
           lsb_release -a
