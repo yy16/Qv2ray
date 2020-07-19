@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo apt-get install -y qemu qemu-user-static
       - name: setup container
-        uses: docker://arm64v8/debian:stable
+        uses: docker://multiarch/debian-debootstrap:arm64-sid
       - name: test
         run: |
           lsb_release -a
