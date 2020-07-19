@@ -1,4 +1,4 @@
-name: Qv2ray build debian package
+name: Qv2ray build debian package - multiarch
 
 on:
   push:
